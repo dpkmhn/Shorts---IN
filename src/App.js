@@ -9,7 +9,7 @@ import apikey from './data/config'//alwasy keep apikey in secret folder
 
 function App() {
 
-  // console.log(process.env);
+  console.log(process.env);
 
   const [category, setCategory] = useState('general')
  
