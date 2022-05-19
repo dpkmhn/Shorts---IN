@@ -21,10 +21,12 @@ function App() {
 
   //Load More
   const [loadmore, setLoadmore] = useState(10)
-  
-  const newsAPI = async() => {
+   const newsAPI = async() => {
     try {
-      const news = await axios.get(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.REACT_APP_API_KEY}&category=${category}&pageSize=${loadmore}`)
+      const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+      
+      
+      const news = await axios.get(`${proxyUrl}https://newsapi.org/v2/top-headlines?country=in&apiKey=${process.env.REACT_APP_API_KEY}&category=${category}&pageSize=${loadmore}`)
       setNewsArray(news.data.articles)
       setNewsResults(news.data.totalResults)
     } catch (error) {
@@ -33,7 +35,7 @@ function App() {
   }
 
   useEffect(() => {
-    newsAPI()
+    newsAPI();
   }, [newsResults,category,loadmore])
   
 
